@@ -25,7 +25,7 @@ Application web de gestion de réservations pour un hostel/hôtel : inscription 
 - **bookings** — réservations (dates, statut, prix total)
 - **payments** — paiements liés à une réservation
 
-## ⚠️ Prérequis (installation plus lourde qu'un projet MySQL classique)
+##  Prérequis (installation plus lourde qu'un projet MySQL classique)
 
 Ce projet nécessite :
 1. **Un serveur PHP + Apache** (ex: XAMPP ou WampServer)
@@ -56,7 +56,7 @@ Ce projet nécessite :
 
 7. Accéder à l'application via `http://localhost/Hostel/`.
 
-## ⚠️ Notes importantes / limitations connues
+##  Notes importantes / limitations connues
 
 - **Comptes de démonstration** : le compte admin créé par `insert_Data.sql` (`admin@hostel.com`) utilise un mot de passe stocké en clair (`hostel123`) à des fins de démo/test. **Les nouveaux comptes créés via le formulaire d'inscription, eux, sont correctement hashés avec bcrypt** (voir `includes/functions.php`).
 - Les identifiants de connexion Oracle dans `includes/config.php` sont ceux d'une base de développement locale — à adapter selon votre propre installation.
