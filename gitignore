@@ -1,0 +1,10 @@
+# PHP / IDE
+.vscode/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / local config (uncomment if you create one)
+# .env
