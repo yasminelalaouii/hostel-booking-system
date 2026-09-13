@@ -1,67 +1,66 @@
-# Serenity Stay — Système de Réservation d'Hôtel (PHP + Oracle)
+# Serenity Stay — Hotel Booking System (PHP + Oracle)
 
-Application web de gestion de réservations pour un hostel/hôtel : inscription et connexion des utilisateurs, réservation de chambres, suivi des paiements, et un tableau de bord administrateur complet (gestion des chambres, réservations, utilisateurs, rapports).
+Web application for managing hotel/hostel bookings: user registration and login, room reservations, payment tracking, and a full admin dashboard (room management, bookings, users, reports).
 
-## Fonctionnalités
+## Features
 
-- Inscription / connexion des utilisateurs (mots de passe hashés avec bcrypt pour les nouveaux comptes)
-- Réservation de chambres avec calcul automatique du prix selon la durée du séjour
-- Suivi des paiements liés à chaque réservation
-- Espace "Mes réservations" pour les utilisateurs
-- Tableau de bord administrateur : gestion des chambres, des réservations, des utilisateurs, et rapports
-- Connexion à une base de données **Oracle Database (XE)**
+- User registration/login (passwords hashed with bcrypt for new accounts)
+- Room booking with automatic price calculation based on stay duration
+- Payment tracking linked to each booking
+- "My Bookings" section for users
+- Admin dashboard: room management, bookings, users, and reports
+- Connection to an **Oracle Database (XE)**
 
-## Stack technique
+## Tech Stack
 
-- PHP (natif, sans framework)
-- Oracle Database XE (via l'extension PHP `oci8`)
-- HTML / CSS / JavaScript côté front-end
+- PHP (vanilla, no framework)
+- Oracle Database XE (via the PHP `oci8` extension)
+- HTML / CSS / JavaScript on the front end
 
-## Schéma de la base de données
+## Database Schema
 
-4 tables principales (voir `database_oracle/TABLES_Creation.sql`) :
-- **users** — comptes utilisateurs et administrateurs
-- **rooms** — chambres disponibles (numéro, type, capacité, prix, statut)
-- **bookings** — réservations (dates, statut, prix total)
-- **payments** — paiements liés à une réservation
+4 main tables (see `database_oracle/TABLES_Creation.sql`):
+- **users** — user and admin accounts
+- **rooms** — available rooms (number, type, capacity, price, status)
+- **bookings** — reservations (dates, status, total price)
+- **payments** — payments linked to a booking
 
-##  Prérequis (installation plus lourde qu'un projet MySQL classique)
+##  Prerequisites (heavier setup than a typical MySQL project)
 
-Ce projet nécessite :
-1. **Un serveur PHP + Apache** (ex: XAMPP ou WampServer)
-2. **Oracle Database XE** installé et configuré (plus lourd qu'une base MySQL/SQLite classique — environ 2-3 Go)
-3. **L'extension PHP `oci8`** activée dans votre `php.ini` (pas activée par défaut, nécessite le client Oracle Instant Client)
+This project requires:
+1. **A PHP + Apache server** (e.g., XAMPP or WampServer)
+2. **Oracle Database XE** installed and configured (heavier than a standard MySQL/SQLite database — around 2-3 GB)
+3. **The PHP `oci8` extension** enabled in your `php.ini` (not enabled by default, requires the Oracle Instant Client)
 
 ## Installation
 
-1. Cloner le repo :
+1. Clone the repo:
    ```bash
-   git clone <URL_DE_TON_REPO>
+   git clone <YOUR_REPO_URL>
    ```
 
-2. Placer le dossier `Hostel/` dans le répertoire de votre serveur web (ex: `htdocs/` pour XAMPP).
+2. Place the `Hostel/` folder in your web server's directory (e.g., `htdocs/` for XAMPP).
 
-3. Installer Oracle Database XE, puis exécuter les scripts SQL dans l'ordre :
+3. Install Oracle Database XE, then run the SQL scripts in order:
    ```
-   database_oracle/creating_the_user_in_oracle.sql   -- crée l'utilisateur Oracle
-   database_oracle/TABLES_Creation.sql               -- crée les tables
-   database_oracle/insert_Data.sql                   -- insère des données de démo
+   database_oracle/creating_the_user_in_oracle.sql   -- creates the Oracle user
+   database_oracle/TABLES_Creation.sql               -- creates the tables
+   database_oracle/insert_Data.sql                   -- inserts demo data
    ```
 
-4. Vérifier/adapter les identifiants de connexion dans `includes/config.php` si besoin (par défaut configuré pour une instance Oracle XE locale).
+4. Check/update the connection credentials in `includes/config.php` if needed (configured by default for a local Oracle XE instance).
 
-5. Activer l'extension `oci8` dans PHP (voir les captures d'écran dans `database_oracle/test_connection/` pour un exemple de configuration réussie).
+5. Enable the `oci8` extension in PHP (see the screenshots in `database_oracle/test_connection/` for a working configuration example).
 
-6. Tester la connexion à la base avec `database_oracle/test_connection/test_oracle.php`.
+6. Test the database connection with `database_oracle/test_connection/test_oracle.php`.
 
-7. Accéder à l'application via `http://localhost/Hostel/`.
+7. Access the application at `http://localhost/Hostel/`.
 
-##  Notes importantes / limitations connues
+##  Important Notes / Known Limitations
 
-- **Comptes de démonstration** : le compte admin créé par `insert_Data.sql` (`admin@hostel.com`) utilise un mot de passe stocké en clair (`hostel123`) à des fins de démo/test. **Les nouveaux comptes créés via le formulaire d'inscription, eux, sont correctement hashés avec bcrypt** (voir `includes/functions.php`).
-- Les identifiants de connexion Oracle dans `includes/config.php` sont ceux d'une base de développement locale — à adapter selon votre propre installation.
-- Ce projet est un exercice académique / portfolio, non déployé en production.
+- **Demo accounts**: the admin account created by `insert_Data.sql` (`admin@hostel.com`) uses a plaintext password (`hostel123`) for demo/testing purposes only. **New accounts created through the registration form are properly hashed with bcrypt** (see `includes/functions.php`).
+- The Oracle connection credentials in `includes/config.php` belong to a local development database — update them for your own setup.
+- This project is an academic/portfolio exercise, not deployed to production.
 
 ## Technologies
-
 PHP, Oracle Database (oci8), HTML/CSS, JavaScript
